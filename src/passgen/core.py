@@ -119,6 +119,20 @@ class Permutation(Generator):
             yield from Chain(order, sep=self.sep, map_each=self.map_each)
 
 
+class Case(Generator):
+    def __init__(self, child):
+        self.child = Generator.new(child)
+
+    def __iter__(self):
+        for word in self.child:
+            seen = set()
+            for transform in (str.lower, str.upper, str.capitalize, str.title, str.swapcase):
+                value = transform(word)
+                if value not in seen:
+                    seen.add(value)
+                    yield value
+
+
 DEFAULT_LEET = {
     "a": ["@", "4"],
     "b": ["8"],

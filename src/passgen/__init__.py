@@ -1,5 +1,6 @@
 from .core import (
     Alternative,
+    Case,
     Chain,
     Concat,
     DEFAULT_LEET,
@@ -19,6 +20,7 @@ from .wordlist import unique, write_wordlist
 
 __all__ = [
     "Alternative",
+    "Case",
     "Chain",
     "Concat",
     "DEFAULT_LEET",

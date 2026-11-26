@@ -1,4 +1,5 @@
 from passgen import (
+    Case,
     Chain,
     Leet,
     Nothing,
@@ -53,6 +54,20 @@ def test_permutation():
 def test_empty_iterable_is_nothing():
     assert list(g([])) == []
     assert list(Nothing()) == []
+
+
+def test_case():
+    assert list(Case("ab")) == ["ab", "AB", "Ab"]
+    assert list(Case("hello world")) == [
+        "hello world",
+        "HELLO WORLD",
+        "Hello world",
+        "Hello World",
+    ]
+
+
+def test_case_dedupes_per_word():
+    assert list(Case("A")) == ["a", "A"]
 
 
 def test_leet_default():
